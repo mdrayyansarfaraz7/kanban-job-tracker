@@ -1,6 +1,7 @@
 
 
 export default function Home() {
+
   return (
     <main className="flex min-h-screen items-center justify-center from-gray-900 via-gray-950 to-black text-white">
       <div className="text-center">
@@ -20,4 +21,3 @@ export default function Home() {
     </main>
   );
 }
-
