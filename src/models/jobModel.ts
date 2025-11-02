@@ -30,7 +30,7 @@ const JobCardSchema = new Schema<IJobCard>(
       enum: ["Applied", "Interviewing", "Offer Received", "Rejected"],
       default: "Applied",
     },
-    dateApplied: { type: Date },
+    dateApplied: { type: Date ,required:true},
     jobApplicationLink: { type: String },
     notes: { type: String },
     meetingLinks: [{ type: String }],
@@ -45,7 +45,7 @@ const JobCardSchema = new Schema<IJobCard>(
     priority: {
       type: String,
       enum: ["Low", "Medium", "High"],
-      default: "Medium",
+      default: "High",
     },
     location: { type: String },
     lastStatusChange: { type: Date, default: Date.now },
