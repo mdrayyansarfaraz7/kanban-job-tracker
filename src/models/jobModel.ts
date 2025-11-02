@@ -39,6 +39,7 @@ const JobCardSchema = new Schema<IJobCard>(
         roundName: { type: String },
         date: { type: Date },
         feedback: { type: String },
+        _id:false
       },
     ],
     offerDeadline: { type: Date },
