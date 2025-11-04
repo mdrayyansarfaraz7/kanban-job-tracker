@@ -17,6 +17,7 @@ export interface IJobCard extends Document {
   priority?: "Low" | "Medium" | "High";
   location?: string;
   lastStatusChange?: Date;
+  order: number;
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -50,6 +51,7 @@ const JobCardSchema = new Schema<IJobCard>(
     },
     location: { type: String },
     lastStatusChange: { type: Date, default: Date.now },
+    order: { type: Number, default:1000 ,required: true }
   },
   { timestamps: true }
 );
