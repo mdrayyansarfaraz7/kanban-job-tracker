@@ -80,8 +80,8 @@ export default function KanbanBoard() {
       })
         .catch(() => {
           toast.error("Error in adding job card Added!", {
-            duration: 3000,
-          });
+  duration: 3000,
+});
         });
       setForm({
         companyName: "",
@@ -114,6 +114,17 @@ export default function KanbanBoard() {
     }
     fetchJobs();
   }, [refresh]);
+
+  const handleDelete = async (id: string) => {
+  try {
+    await axios.delete(`/api/jobs/${id}`);
+    setJobs(prev => prev.filter(job => job._id !== id));
+    toast.success("Job deleted successfully!");
+  } catch (error) {
+    console.error("Error deleting job:", error);
+    toast.error("Failed to delete job");
+  }
+};
 
   return (
     <div className="w-full bg-linear-to-b from-slate-50 to-slate-100 p-4 overflow-x-auto">
@@ -258,7 +269,7 @@ export default function KanbanBoard() {
                     No cards here yet
                   </p>
                 ) : (
-                  filteredJobs.map((job) => <JobCard key={job._id} {...job} />)
+                  filteredJobs.map((job) => <JobCard key={job._id} {...job} handelDelete={handleDelete}/>)
                 )}
               </div>
             </div>
