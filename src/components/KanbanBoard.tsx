@@ -28,7 +28,13 @@ import {
 import { toast } from "sonner";
 import { DndContext, DragEndEvent, useDroppable } from "@dnd-kit/core";
 
-export default function KanbanBoard() {
+export default function KanbanBoard({
+  refresh,
+  setRefresh,
+}: {
+  refresh: boolean;
+  setRefresh: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   interface Job {
     _id: string;
     companyName: string;
@@ -71,7 +77,7 @@ export default function KanbanBoard() {
   });
   const [open, setOpen] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
-  const [refresh, setRefresh] = useState(false);
+
 
   const getColumnData = (col: string) => {
     switch (col) {
@@ -214,6 +220,7 @@ export default function KanbanBoard() {
         order: newOrder,
       });
       toast.success(`Moved to ${newStatus}`);
+      setRefresh((p) => !p);
     } catch (err) {
       console.error(err);
       toast.error("Failed to update job status");

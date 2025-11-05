@@ -2,7 +2,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function StatsCards() {
+export default function StatsCards({ refresh }: { refresh: boolean }) {
   const [stats, setStats] = useState({
     applied: 0,
     interviewing: 0,
@@ -26,7 +26,7 @@ export default function StatsCards() {
       }
     };
     fetchData();
-  }, []);
+  }, [refresh]);
 
   const data = [
     { label: "Applied", value: stats.applied },

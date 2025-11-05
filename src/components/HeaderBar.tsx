@@ -2,7 +2,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import StatsCards from "./StatsCards";
 
-export default function HeaderBar() {
+export default function HeaderBar({ refresh }: { refresh: boolean }) {
   return (
     <Card className="w-full bg-white border border-slate-200 shadow-sm rounded-xl p-4 flex flex-col md:flex-row items-center justify-between">
       {/* Left Profile Section */}
@@ -31,7 +31,7 @@ export default function HeaderBar() {
         <h2 className="text-5xl font-bold text-[#1e3a8a]">
           Kanban Job Tracker
         </h2>
-        <StatsCards />
+        <StatsCards refresh={refresh}/>
       </div>
     </Card>
   );
