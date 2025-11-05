@@ -36,14 +36,14 @@ export default function StatsCards({ refresh }: { refresh: boolean }) {
   ];
 
   return (
-    <div className="flex gap-2 mt-2 flex-wrap justify-center md:justify-start">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-4 w-full">
       {data.map((item, index) => (
         <div
           key={index}
-          className="bg-blue-100 text-[#1e3a8a] rounded-md shadow-sm w-[120px] h-[55px] flex flex-col items-center justify-center hover:bg-[#aeeafc] transition cursor-pointer"
+          className="bg-linear-to-br from-blue-100 to-blue-200 text-[#1e3a8a] rounded-xl shadow-md h-[70px] flex flex-col items-center justify-center p-3 hover:scale-105 hover:shadow-lg transition-transform duration-300 cursor-pointer"
         >
-          <span className="text-lg font-bold leading-tight">{item.value}</span>
-          <span className="text-xs text-[#1e3a8a]/80">{item.label}</span>
+          <span className="text-lg sm:text-xl font-bold leading-tight">{item.value}</span>
+          <span className="text-xs sm:text-sm text-[#1e3a8a]/80">{item.label}</span>
         </div>
       ))}
     </div>
