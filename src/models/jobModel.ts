@@ -51,7 +51,7 @@ const JobCardSchema = new Schema<IJobCard>(
     },
     location: { type: String },
     lastStatusChange: { type: Date, default: Date.now },
-    order: { type: Number, default:1000 ,required: true }
+    order: { type: Number, default:1 ,required: true }
   },
   { timestamps: true }
 );

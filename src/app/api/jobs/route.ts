@@ -29,7 +29,7 @@ export async function POST(request: Request) {
         .select("order");
 
         const lastOrder = lastJob?.order ?? 0; 
-        const newOrder = lastOrder + 1000;
+        const newOrder = lastOrder + 1;
         console.log("New Job Order:", newOrder);
         const newJob = await Job.create({
             companyName,

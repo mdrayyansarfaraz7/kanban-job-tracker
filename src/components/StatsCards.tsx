@@ -18,7 +18,7 @@ export default function StatsCards() {
         setStats({
           applied: jobs.filter((j: any) => j.status === "Applied").length,
           interviewing: jobs.filter((j: any) => j.status === "Interviewing").length,
-          offered: jobs.filter((j: any) => j.status === "OfferReceived").length,
+          offered: jobs.filter((j: any) => j.status === "Offer Received").length,
           rejected: jobs.filter((j: any) => j.status === "Rejected").length,
         });
       } catch (err) {

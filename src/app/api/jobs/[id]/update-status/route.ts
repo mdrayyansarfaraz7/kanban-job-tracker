@@ -10,6 +10,7 @@ export async function PATCH(
     await dbConnect();
     const { id } = await context.params;
     const { status, order } = await req.json();
+    console.log("Received data:", { status, order });
 
     if (!status) {
       return NextResponse.json(
@@ -25,7 +26,7 @@ export async function PATCH(
         .sort({ order: -1 })
         .select("order");
 
-      newOrder = lastJob ? lastJob.order + 1000 : 1000;
+      newOrder = lastJob ? lastJob.order + 1 : 1;
     }
 
     const updatedJob = await Job.findByIdAndUpdate(
