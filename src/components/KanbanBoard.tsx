@@ -27,6 +27,7 @@ import {
 } from "./ui/select";
 import { toast } from "sonner";
 import { DndContext, DragEndEvent, useDroppable } from "@dnd-kit/core";
+import { set } from "mongoose";
 
 export default function KanbanBoard({
   refresh,
@@ -139,11 +140,24 @@ export default function KanbanBoard({
       setOfferJobs((prev) => prev.filter((job) => job._id !== id));
       setRejectedJobs((prev) => prev.filter((job) => job._id !== id));
       toast.success("Job deleted successfully!");
+      setRefresh((p) => !p);
     } catch (error) {
       console.error("Error deleting job:", error);
       toast.error("Failed to delete job");
     }
   };
+
+  const handelUpdate= async( _id:string,updatedData:any)=>{
+    try {
+      await axios.put(`/api/jobs/${_id}`, updatedData);
+      toast.success("Job updated successfully!");
+      setRefresh((p) => !p);
+      
+    } catch (error) {
+      console.error("Error updating job:", error);
+      toast.error("Failed to update job");
+    }
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -356,7 +370,7 @@ export default function KanbanBoard({
                           <p className="text-slate-400 text-sm text-center mt-6">No cards here yet</p>
                         ) : (
                           jobsInCol.map((job) => (
-                            <JobCard key={job._id} {...job} handelDelete={handleDelete} />
+                            <JobCard key={job._id} {...job} handelDelete={handleDelete} handelUpdate={handelUpdate}/>
                           ))
                         )}
                       </div>
