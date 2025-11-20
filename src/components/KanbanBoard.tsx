@@ -27,7 +27,6 @@ import {
 } from "./ui/select";
 import { toast } from "sonner";
 import { DndContext, DragEndEvent, useDroppable } from "@dnd-kit/core";
-import { set } from "mongoose";
 
 export default function KanbanBoard({
   refresh,
@@ -201,8 +200,7 @@ export default function KanbanBoard({
   const handleDragEnd = async (event: DragEndEvent) => {
     const { active, over } = event;
     if (!over) return;
-
-    const jobId = String(active.id);
+    const jobId = active.id;
     const newStatus = over.id as Job["status"];
 
     const allColumns = {
@@ -251,7 +249,6 @@ export default function KanbanBoard({
         </div>
       ) : (
         <>
-          {/* Global Add Job Dialog */}
           <div className="flex justify-end mb-4">
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>

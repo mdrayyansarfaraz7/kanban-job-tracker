@@ -31,7 +31,7 @@ Kanban Job Tracker is a **Next.js + TypeScript** application designed to manage 
 | `/jobs/:id`                | GET    | Get details of a specific job application                           |
 | `/jobs/:id`                | PUT    | Update a job application                                            |
 | `/jobs/:id`                | DELETE | Delete a job application                                            |
-| `/jobs/:id/update-status/` | PUT    | Update the status of a job application (move across Kanban columns) |
+| `/jobs/:id/update-status/` | PATCH  | Update the status of a job application (move across Kanban columns) |
 
 ---
 

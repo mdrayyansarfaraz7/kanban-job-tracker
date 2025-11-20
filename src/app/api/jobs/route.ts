@@ -30,7 +30,7 @@ export async function POST(request: Request) {
 
         const lastOrder = lastJob?.order ?? 0; 
         const newOrder = lastOrder + 1;
-        console.log("New Job Order:", newOrder);
+
         const newJob = await Job.create({
             companyName,
             role,
@@ -43,7 +43,7 @@ export async function POST(request: Request) {
             notes,
             order: newOrder,
         });
-        console.log("Created Job:", newJob);
+        
         
         return NextResponse.json({ job: newJob }, { status: 201 });
     } catch (error) {

@@ -60,7 +60,6 @@ export default function JobCard({
   dateApplied,
   jobApplicationLink,
   notes,
-  order,
   meetingLinks = [],
   interviewRounds = [],
   offerDeadline,
@@ -112,10 +111,10 @@ export default function JobCard({
     setFormData({ ...formData, meetingLinks: updated });
   };
   const addMeeting = () => setFormData({ ...formData, meetingLinks: [...formData.meetingLinks, ""] });
+
   const removeMeeting = (index: number) =>
     setFormData({ ...formData, meetingLinks: formData.meetingLinks.filter((_, i) => i !== index) });
 
-  // Dynamic Interview Rounds
   const handleRoundChange = (index: number, field: keyof InterviewRound, value: string) => {
     const updated = [...formData.interviewRounds];
     updated[index] = { ...updated[index], [field]: value };
@@ -136,8 +135,8 @@ export default function JobCard({
     e.preventDefault();
     setIsSaving(true);
     try {
-      console.log("Updated Data:", formData); // simulate API call
-      await handelUpdate(_id, formData); // call your update function
+      console.log("Updated Data:", formData); 
+      await handelUpdate(_id, formData); 
       setFormData({
         notes: "",
         meetingLinks: [""],
@@ -154,7 +153,7 @@ export default function JobCard({
 
   return (
     <Card ref={setNodeRef} style={style} className="border border-slate-200 hover:shadow-md transition-all duration-200 rounded-xl">
-      {/* Draggable Header */}
+      
       <div {...listeners} {...attributes} className="flex justify-between items-start p-4 cursor-grab select-none">
         <div>
           <h3 className="text-lg font-semibold text-slate-800">{companyName}</h3>
